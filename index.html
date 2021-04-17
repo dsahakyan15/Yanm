@@ -1,0 +1,227 @@
+<?php
+session_start();
+include("db/db.php");
+if ($_SESSION['userId']) {
+    $userID = $_SESSION['userId'];
+    $sel =  mysqli_query($mysqli, "SELECT * FROM `users`");
+
+
+    while ($row = mysqli_fetch_assoc($sel)) {
+        if ($row['id'] === $userID) {
+            $username = $row['username'];
+            $name = $row['name'];
+            $surname = $row['surname'];
+            $mail = $row['mail'];
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fonts/Roboto.css" rel="stylesheet">
+    <title>App</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <img src="./images/yanmLOGO.svg" alt="logo" class="logo">
+            <div class="navbar">
+                <img src="images/search.svg" class="search navbar-item" alt="search">
+
+                <!-- <?php
+                if ($_SESSION['userId']) { 
+                    echo '';
+                    echo '';
+                }
+                ?> -->
+                <a href="pages/favorites.php" class="navbar-item"><img src="images/favorites.svg" alt="favorites" /></a>
+                <a href="pages/cart.php" class="navbar-item"><img src="images/cart.svg" alt="cart" /></a>
+                <a href="#" class="login navbar-item"><img src="images/login.svg" alt="login"></a>
+            </div>
+        </div>
+    </header>
+    <!-- /.header -->
+    <div class="slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/1940x512.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/1940x512.png" alt=""></div>
+                <div class="swiper-slide"><img src="images/1940x512.png" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <!-- /.slider -->
+    <div class="main">
+        <div class="container main-container">
+            <div class="categories">
+                <div class="categories-name"><span>Котегории товаров</span></div>
+                <div class="categories-types">
+                    <div class="categories-type a-foryou">
+                        <a href="">Для вас</a>
+                    </div>
+                    <div class="categories-type a-smartphones">
+                        <a href="">Смартфоны</a>
+                    </div>
+                    <div class="categories-type a-tv">
+                        <a href="">Телевизоры</a>
+                    </div>
+                    <div class="categories-type a-forhome">
+                        <a href="">Для дома</a>
+                    </div>
+                    <div class="categories-type a-computers">
+                        <a href="">Компьюторы</a>
+                    </div>
+                    <div class="categories-type a-gagets">
+                        <a href="">Носимые гаджеты</a>
+                    </div>
+                    <div class="categories-type a-acessories">
+                        <a href="">Аксесуары</a>
+                    </div>
+                    <div class="categories-type a-gameing">
+                        <a href="">Гейминг</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.categories -->
+            <div class="products-gallery">
+                <div class="product-gallery_list for-you">
+                    <span class="list-name">Для вас</span>
+                    <div class="list-products">
+                        <div class="list-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.for-you -->
+                <div class="product-gallery_list smartphones">
+                    <span class="list-name">Смартфоны</span>
+                    <div class="list-products">
+
+                        <div class="list-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="list-product"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.smartphones -->
+            <div class="product-gallery_list for-you">
+                <span class="list-name">Умный дом</span>
+                <div class="list-products">
+                    <div class="list-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="list-product"></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="list-product"></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="list-product"></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="list-product"></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="list-product"></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="list-product"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.products-gallery -->
+        </div>
+    </div>
+    <!-- /.main -->
+
+    <div class="footer">
+        <img src="./images/footer-yanmLOGO.svg" alt="logo" class="footer-logo ">
+        <span class="footer-info">Inchvor ban, sa grvum e enqan vor, nra hamara grvac vor heto poxvi u dra hamar el petq
+            chi panikavat anel der :D</span>
+    </div>
+    <!-- /.footer -->
+    <!-- Modals -->
+    <div class="login-modal hide">
+        <div class="login-modal__window animate__animated">
+            <div class="login-modal__text">
+                <span>Добро пожаловать в</span>
+                <img src="images/yanmLOGO.svg" alt="logo">
+            </div>
+            <!-- /.logic-modal__text -->
+            <div class="login-modal__buttons">
+                <a href="pages/login.php" class="login-button">Войти</a>
+                <div class="line"></div>
+                <a href="pages/reg.php" class="reg-button">Зарегистрироватся</a>
+            </div>
+            <!-- /.logic-modal__buttons -->
+        </div>
+    </div>
+    <!-- /.login-modal -->
+    <div class="search-modal hide ">
+        <div class="search-modal__window animate__animated">
+            <img src="images/search-modal.svg" class="search-icon">
+            <input type="text" class="search-input">
+        </div>
+    </div>
+    <!-- /.search-modal -->
+    <!-- Scripts -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
